@@ -1,0 +1,64 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/user/user",
+    "pages/yyfx/yyfx",
+    "pages/main/mainlist/mainlist",
+    "pages/zjts/meter_zjts/meter_gl/meter_gl",
+    "pages/zjts/meter_zjts/meter_cc",
+    "pages/zjts/meter_zjts/meter_zjts",
+    "pages/zjts/dev_zjts/dev_glcdz/dev_glcdz",
+    "pages/zjts/dev_zjts/dev_zjts",
+    "pages/zjts/zjts",
+    "pages/user/dqcdjl/dqcdjl",
+    "pages/tsjy/tsjy",
+    "pages/tsjy/tsjymx/tsjymx",
+    "pages/main/main",
+    "pages/user/about/about",
+    "pages/zjts/plug_zjts/plug_zjts",
+    "pages/gjcl/gjcl",
+    "pages/user/ysmx/ysmx",
+    "pages/user/hiscd/hiscd",
+    "pages/user/cdxq/cdxq",
+    "pages/zjts/plug_zjts/plug_zjts_next",
+    "pages/tipview/tipview",
+    "pages/gjcl/gjclmx/gjclmx",
+    "pages/user/txsq/newtxsq/newtxsq",
+    "pages/user/txsq/txsq"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#108ee9",
+    "navigationBarTitleText": "驿吧运营商"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "tabBar": {
+    "selectedColor": "#3399FF",
+    "list": [
+      {
+        "pagePath": "pages/main/main",
+        "text": "首页",
+        "iconPath": "image/tab-main-off.png",
+        "selectedIconPath": "image/tab-main.png"
+      },
+      {
+        "pagePath": "pages/zjts/zjts",
+        "text": "装接调试",
+        "iconPath": "image/tab-zjts-off.png",
+        "selectedIconPath": "image/tab-zjts.png"
+      },
+      {
+        "pagePath": "pages/yyfx/yyfx",
+        "text": "运营分析",
+        "iconPath": "image/tab-yyfx-off.png",
+        "selectedIconPath": "image/tab-yyfx.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
