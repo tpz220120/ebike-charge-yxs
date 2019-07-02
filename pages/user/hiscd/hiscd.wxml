@@ -1,0 +1,135 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="confirm"/>
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14" color="#3399FF"></icon>
+                    <view class="weui-search-bar__text">根据手机号码或微信名搜索订单</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}"             bindtap="hideInput">取消</view>
+        </view>
+    </view>
+
+    <view class="main_lb">
+        <view wx:if="{{reCount == 0}}">
+            <view class="re-center">
+              <view class="nor-img">
+                <image src="/image/no-cdlist.png" style="width:180px;height:180px" />
+              </view>
+              <view class="nor-text">暂无充电记录</view>
+            </view>
+        </view>
+        <view wx:if="{{reCount != 0}}">
+        <view wx:for="{{showList}}" wx:key="recordId">
+          <view class="main_list" ontap="goDetail" data-paramid="{{item.recordId}}">
+            <view class= "main_list_stname">
+              {{item.cdzname}}
+            </view>
+            <view class= "main_list_addr">
+                <view class="main-img">
+                  <image src="/image/cd-addr.png" style="width:14px;height:15px;"mode="scaleToFill"/>
+                </view>
+                <view class="main_list_addr_sm">
+                  {{item.stationAddr}}
+                </view>
+            </view>
+            
+            <view class= "main_list_addr">
+                <view class="main-img">
+                  <image src="/image/cd-phone.png" style="width:14px;height:15px;"mode="scaleToFill"/>
+                </view>
+                <view class="main_list_addr_sm">
+                  {{item.chargeUserMobile}}
+                </view>
+            </view>
+
+            <view class= "main_list_addr">
+                <view class="main-img">
+                  <image src="/image/cd-user.png" style="width:14px;height:15px;"mode="scaleToFill"/>
+                </view>
+                <view class="main_list_addr_sm">
+                  {{item.chargeUserName}}
+                </view>
+            </view>
+
+            <view class= "main_list_cdxx main_list_first">
+                <view class="main_param">
+                  充电开始时间：
+                </view>
+                <view class="main_value">
+                  {{item.chargeOpenTime}}
+                </view>
+            </view>
+             <view class= "main_list_cdxx">
+                <view class="main_param">
+                  充电结束时间：
+                </view>
+                <view class="main_value">
+                  {{item.chargeFinishTime}}
+                </view>
+            </view>
+
+             <view class= "main_list_cdxx">
+                <view class="main_param">
+                  充电结束原因：
+                </view>
+                <view class="main_value">
+                  <block wx:if="{{item.finishReason == '0'}}">
+                    电量用完停止充电
+                  </block>
+                  <block wx:if="{{item.finishReason == '1'}}">
+                    浮充时间完成停止充电
+                  </block>
+                  <block wx:if="{{item.finishReason == '2'}}">
+                    插头拔掉停止充电
+                  </block>
+                  <block wx:if="{{item.finishReason == '3'}}">
+                    功率超限停止充电
+                  </block>
+                  <block wx:if="{{item.finishReason == '4'}}">
+                    计时时间到停止充电
+                  </block>
+                  <block wx:if="{{item.finishReason == '-1'}}">
+                    设备总体已经超过最大功率
+                  </block>
+                  <block wx:if="{{item.finishReason == '-97'}}">
+                    剩余充电电量为零或剩余充电时间为零（结束命令未收到）
+                  </block>
+                  <block wx:if="{{item.finishReason == '-98'}}">
+                    充电结束等待超时
+                  </block>
+                  <block wx:if="{{item.finishReason == '-99'}}">
+                    充电开启等待超时
+                  </block>
+                </view>
+            </view>
+
+            <view class= "main_list_cdxx">
+                <view class="main_param">
+                  充电金额：
+                </view>
+                <view class="main_value">
+                  {{item.chargeMoney}}（元）
+                </view>
+            </view>
+            <view class= "main_list_cdxx">
+                <view class="main_param">
+                  退费金额：
+                </view>
+                <view class="main_value">
+                  {{item.returnMoney}}（元）
+                </view>
+            </view>
+          </view>
+        </view>
+        </view>
+    </view>
+</view>

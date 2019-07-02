@@ -1,0 +1,92 @@
+<view class="page">
+  <view class="weui-tab">
+    <view class="weui-navbar">
+      <block wx:for="{{tabs}}" wx:key="*this">
+        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+          <view class="weui-navbar__title">{{item}}</view>
+        </view>
+      </block>
+      <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </view>
+    <view class="weui-tab__panel">
+      <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+        <view class="item-text">
+          <view wx:if="{{wcount == 0}}">
+            <view class="re-center">
+              <view class="nor-img">
+                <image src="/image/no-record-yxs.png" style="width:180px;height:190px;" />
+              </view>
+              <view class="nor-text">暂无记录</view>
+            </view>
+          </view>
+          <view wx:if="{{wcount != 0}}">
+            <view wx:for="{{winfo}}" wx:key="csworkorderId">
+              <view class="item-text-sqxx" data-tsjyid="{{item.csworkorderId}}" data-type="wcl"  bindtap="tsjymx">
+                <view class="item-text-detail">
+                  <view class="item-text-detail-l1">报修时间</view>
+                  <view class="item-text-detail-l3">{{item.commitTimeFormat}}</view>
+                </view>
+                <view class="item-text-detail2">
+                  <view class="item-text-detail-l1">报修说明 </view>
+                  <view class="item-text-detail-l2">{{item.csworkorderDesc}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+        <view class="item-text">
+          <view wx:if="{{ycount == 0}}">
+            <view class="re-center">
+              <view class="nor-img">
+                <image src="/image/no-record-yxs.png" style="width:180px;height:190px;" />
+              </view>
+              <view class="nor-text">暂无记录</view>
+            </view>
+          </view>
+          <view wx:if="{{ycount != 0}}">
+            <view wx:for="{{yinfo}}" wx:key="csworkorderId">
+              <view class="item-text-sqxx" data-tsjyid="{{item.csworkorderId}}" data-type="ycl" bindtap="tsjymx">
+                <view class="item-text-detail">
+                  <view class="item-text-detail-l1">报修时间</view>
+                  <view class="item-text-detail-l3">{{item.commitTimeFormat}}</view>
+                </view>
+                <view class="item-text-detail2">
+                  <view class="item-text-detail-l1">报修说明 </view>
+                  <view class="item-text-detail-l2">{{item.csworkorderDesc}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+        <view class="item-text">
+          <view wx:if="{{gcount == 0}}">
+            <view class="re-center">
+              <view class="nor-img">
+                <image src="/image/no-record-yxs.png" style="width:180px;height:190px;" />
+              </view>
+              <view class="nor-text">暂无记录</view>
+            </view>
+          </view>
+          <view wx:if="{{gcount != 0}}">
+            <view wx:for="{{ginfo}}" wx:key="csworkorderId">
+              <view class="item-text-sqxx" data-tsjyid="{{item.csworkorderId}}" data-type="ygd" bindtap="tsjymx">
+                <view class="item-text-detail">
+                  <view class="item-text-detail-l1">报修时间</view>
+                  <view class="item-text-detail-l3">{{item.commitTimeFormat}}</view>
+                </view>
+                <view class="item-text-detail2">
+                  <view class="item-text-detail-l1">报修说明 </view>
+                  <view class="item-text-detail-l2">{{item.csworkorderDesc}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

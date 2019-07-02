@@ -1,0 +1,97 @@
+<view>
+  <view class="{{type == 'wcl'?'item-text-wcl':'item-text'}}">
+    <view class="item-text-sqxx">
+    	<view class="item-text-title">
+    		告警信息
+    	</view>
+    	<view class="item-text-detail">
+    		<view class="item-text-detail-l1">告警时间 </view>
+    		<view class="item-text-detail-l2">{{info.alarmTime}}</view>
+    	</view>
+      <view class="item-text-detail">
+	    		<view class="item-text-detail-l1">充电站地址 </view>
+          <view class="item-text-detail-l2">{{info.chargestationAddr}}</view>
+	    </view>
+      <view class="item-text-detail">
+    		<view class="item-text-detail-l1">充电设备编号 </view>
+    		<view class="item-text-detail-l2">{{info.chargedeviceNo}}</view>
+    	</view>
+      <view wx:if="{{info.opsworkorderType=='201' || info.opsworkorderType=='202'}}"class="item-text-detail2">
+          <view class="item-text-detail-l1">充电插座序号 </view>
+          <view class="item-text-detail-l2">{{info.czh}}</view>
+      </view>
+      <view class="item-text-detail">
+    		<view class="item-text-detail-l1">告警类型 </view>
+    		<view wx:if="{{info.opsworkorderType=='101'}}" class="item-text-detail-l2">设备离线</view>
+        <view wx:if="{{info.opsworkorderType=='102'}}" class="item-text-detail-l2">设备停电</view>
+        <view wx:if="{{info.opsworkorderType=='201'}}" class="item-text-detail-l2">插座供电异常</view>
+        <view wx:if="{{info.opsworkorderType=='202'}}" class="item-text-detail-l2">插座端子失电</view>
+    	</view>
+      <view class="item-text-detail">
+    		<view class="item-text-detail-l1">告警内容 </view>
+    		<view class="item-text-detail-l2">{{info.opsworkorderDesc}}</view>
+    	</view>
+    </view>
+    
+    <view class="item-text-sqxx">
+    	<view class="item-text-title">
+    		处理及反馈信息
+    	</view>
+    		<view class="item-text-cl" wx:for="{{dinfo}}" wx:key="csworkorderId">
+	    		<view>
+		    		<view class="item-text-cl-l1">{{item.handleSn}}、</view>
+		    		<view class="item-text-cl-l2">{{item.handleTime}}</view>
+		    		<view class="item-text-cl-l3"></view>
+		    	</view>
+		    	<block wx:if="{{item.handleDesc != ''}}">
+		    		<view>
+			    		<view class="item-text-cl-l5">{{item.handleDesc}} </view>
+			    	</view>
+		    	</block>
+		    	<view style="height:1px; margin-top:-1px;clear: both;overflow:hidden;"></view>
+		    </view>
+    </view>
+    <block wx:if="{{type == 'ygd'}}">
+	    <view class="item-text-sqxx">
+	    	<view class="item-text-title">
+	    		归档信息
+	    	</view>
+    		<view class="item-text-gd">
+		    	<view>
+		    		<view class="item-text-gd-l1">{{info.archiveTimeFormat}}</view>
+		    		<view class="item-text-gd-l2">归档</view>
+		    	</view>
+		    	<view>
+		    		<view class="item-text-gd-l3">{{info.archiveDesc}}</view>
+		    	</view>
+	    	</view>
+	    </view>
+    </block>
+    </view>
+    <!--平台级别不处理告警工单，如果不是平台节点并且类型为未处理的情况下，显示处理信息页面-->
+    <block wx:if="{{sfpt != '1' && type == 'wcl'}}">
+      <view class="item-btn">
+        <view class="item-btn-cl"  bindtap="rePage">处理并回复平台</view>
+      </view>
+      <view class="modal" wx:if="{{!hidden}}">
+			<view class="modal-container" animation="{{animContentData}}">
+				<view class="modal-close" bindtap="onModalCloseTap">×</view>
+				<view class="modal-content">
+					<view class="grid-child">
+						<view class="grid-child-title">
+							<text class="c-title">处理意见</text>
+						</view>
+					</view>
+					<view class="page-section">
+						<view class="page-section-demo">
+							<textarea bindinput="bindTextAreaBlur" name="textarea" placeholder="请输入处理意见" fixed="true" style="height:100px"/>
+						</view>
+						<view class="page-section-btns">
+							<button type="primary" bindtap="qrfk">确认回复</button>
+						</view>  
+					</view>
+				</view>
+			</view>
+      </view>
+	  </block>
+</view>

@@ -1,0 +1,185 @@
+page{
+  background:rgba(230,230,230,1);
+}
+
+.weui-media-box__desc{
+  font-size:15px;
+}
+
+.weui-search-bar__form{
+  width:90%;
+}
+
+.weui-search-bar__cancel-btn{
+  color:#3399FF;
+}
+
+.search-img{
+  display: flex;
+  align-items: center;
+  width:10%;
+  margin-left:15px;
+}
+
+.main_lb{
+  font-family:MicrosoftYaHei;
+  font-weight:400;
+  font-size:12px;
+  color:rgba(100,100,100,1);
+}
+
+
+.main_st{
+	width:95%;
+	height:auto;
+	background:rgba(255,255,255,1);
+	box-shadow:0px 4px 4px 0px rgba(77,77,77,0.2);
+	border-radius:5px;
+	margin:10px;
+}
+
+.main_st_show_first{
+	display:flex;
+	padding:15px 15px 5px 15px;
+}
+
+.main_st_show{
+	display:flex;
+	padding:5px 15px 5px 15px;
+}
+
+.main_st_show_end{
+	display:flex;
+	padding:5px 15px 11px 15px;
+}
+
+.main_st_img{
+	display:flex;
+	justify-content:center;
+    align-items: top;
+}
+
+.main_st_text{
+	margin-left:10px;
+	font-size:15px;
+	font-family:MicrosoftYaHei;
+	font-weight:400;
+	color:rgba(50,50,50,1);
+	line-height:15px;
+}
+
+.main_st_text2{
+	margin-left:10px;
+	line-height:15px;
+}
+
+.main_st_img2{
+	text-align:center;
+}
+
+.main_detail{
+	margin:0 15px 10px 15px;
+	background:rgba(230,242,255,1);
+	box-shadow:0px 2px 4px 0px rgba(77,77,77,0.2);
+	border-radius:5px;
+}
+
+.main_detail_title{
+	display:flex;
+	text-align:center;
+	line-height:30px;
+}
+
+.main_detail_title_text{
+	width:50%;
+}
+
+.main_detail_list{
+	margin:5px 10px 0px 10px;
+	background:rgba(255,255,255,1);
+	box-shadow:0px 2px 2px 0px rgba(77,77,77,0.1);
+	display:flex;
+	height:30px;
+	line-height:30px;
+}
+
+.main_blank{
+	height:8px;
+}
+
+.main_detail_list_a1{
+	text-align:right;
+	width:25%;
+	margin-right:20px;
+	line-height:26px;
+}
+
+.main_detail_list_a2{
+	width:30%;
+}
+
+.main_detail_list_a3{
+	text-align:center;
+	width:33%;
+	line-height:26px;
+}
+
+.main_detail_list_a4{
+	width:7%;
+}
+
+.main_tsxx_detail{
+	background:rgba(246,246,246,1);
+    box-shadow:0px 2px 2px 0px rgba(77,77,77,0.1);
+    font-size:9px;
+    margin:0px 10px 0px 10px;
+}
+
+.main_tsxx_list{
+	background:rgba(255,255,255,1);
+	margin:0px 10px 0px 10px;
+}
+
+.main_btn{
+	margin:10px auto;
+	background:rgba(51,153,255,1);
+	border-radius:10px;
+	height:30px;
+	width:100px;
+	text-align:center;
+}
+
+.main_btn_text{
+	color:rgba(255,255,255,1);
+	font-size:12px;
+	line-height:30px;
+}
+
+.main_detail_cb{
+	display:flex;
+	text-align:left;
+	font-size:9px;
+}
+
+.main_meter_blank{
+	width:16%;
+}
+
+.main_meter_cb{
+	width:42%;
+}
+
+.down{
+  text-align:center;
+}
+.tscg{
+  color: green;
+}
+.tssb{
+  color: red;
+}
+
+.weui-progress{
+  margin-left:10px;
+  margin-right:10px;
+}

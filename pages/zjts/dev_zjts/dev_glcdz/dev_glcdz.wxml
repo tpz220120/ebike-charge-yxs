@@ -1,0 +1,52 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="confirm"/>
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14" color="#3399FF"></icon>
+                    <view class="weui-search-bar__text">根据名称或地址搜索充电站</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}"             bindtap="hideInput">取消</view>
+        </view>
+    </view>
+
+    <view class="main_lb">
+        <view wx:for="{{showList}}" wx:key="id">
+          <view class="{{index == selc ? 'main_list_sel': 'main_list_nosel'}}" ontap="getSel" data-paramid="{{item.id}}" data-indexsel="{{index}}">
+            <view class= "main_list_stname">
+              <view class="main_stname">
+                {{item.name}}
+              </view>
+              <view wx:if="{{item.chargeDevNo  != ''}}">
+              <image src="/image/rel_exsit.png" style="width:25px;height:21px;"mode="scaleToFill"/>
+            </view>
+            </view>
+            <view class= "main_list_addr">
+                <view class="main-img">
+                  <image src="/image/cd-addr.png" style="width:14px;height:15px;"mode="scaleToFill"/>
+                </view>
+                <view class="main_list_addr_sm">
+                  {{item.stationAddr}}
+                </view>
+            </view>
+            
+            <view wx:if="{{item.chargeDevNo  != ''}}" class= "main_list_dev">
+                <text>已关联充电设备编号：</text><text style="color:#3399FF"> {{item.chargeDevNo}}</text>
+            </view>
+          </view>
+        </view>
+    </view>
+    <view class= "main_list_btn" bindtap='glcdz'>
+        <view class="main_list_btn_text">
+            确定
+        </view>
+    </view>
+</view>

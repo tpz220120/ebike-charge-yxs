@@ -1,0 +1,84 @@
+<view class="page">
+  <view class="weui-tab">
+    <view class="weui-navbar">
+      <block wx:for="{{tabs}}" wx:key="*this">
+        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+          <view class="weui-navbar__title">{{item}}</view>
+        </view>
+      </block>
+      <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </view>
+    <view class="weui-tab__panel">
+      <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+        <view class="item-text">
+          <view class="month-header">
+            <view class="month">{{selday}}</view>
+            <view class="month-img">
+              <image src="/image/cal.png" style="width:15px;height:15px" />
+            </view>
+            <view class="month-text">
+              <picker mode="date" value="{{selday}}" fields="month" start="{{startDate}}" end="{{endDate}}" bindchange="getD">选择其他月</picker>
+            </view>
+          </view>
+          <view class="line"></view>
+          <view wx:if="{{rcount == 0}}">
+            <view class="re-center">
+              <view class="nor-img">
+                <image src="/image/no-record-yxs.png" style="width:180px;height:190px;" />
+              </view>
+              <view class="nor-text">暂无明细数据</view>
+            </view>
+          </view>
+          <view wx:if="{{rcount != 0}}">
+            <view wx:for="{{rinfo}}" wx:key="opsworkorderId">
+              <view class="record-cells">
+                <view class="record-cell">
+                  <view class="cellimg">
+                    <image src="/image/time.png" style="width:13px;height:13px" />
+                  </view>
+                  <view class="celltext">{{item.rq}}</view>
+                  <view class="celltext-st">{{item.chargeIncome}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+        <view class="item-text">
+          <view class="month-header">
+            <view class="month">{{month}}</view>
+            <view class="month-img">
+              <image src="/image/cal.png" style="width:15px;height:15px" />
+            </view>
+            <view class="month-text">
+              <picker mode="date" value="{{month}}" fields="year" start="{{startDate}}" end="{{endDate}}" bindchange="getM">选择其他年</picker>
+            </view>
+          </view>
+          <view class="line"></view>
+          <view wx:if="{{ycount == 0}}">
+            <view class="re-center">
+              <view class="nor-img">
+                <image src="/image/no-record-yxs.png" style="width:180px;height:190px;" />
+              </view>
+              <view class="nor-text">暂无明细数据</view>
+            </view>
+          </view>
+          <view wx:if="{{ycount != 0}}">
+            <view wx:for="{{yinfo}}" wx:key="opsworkorderId">
+              <view class="record-cells" bindtap="goMonthSel" data-rq = "{{item.rq}}">
+                <view class="record-cell">
+                  <view class="cellimg">
+                    <image src="/image/time.png" style="width:13px;height:13px" />
+                  </view>
+                  <view class="celltext">{{item.rq}}</view>
+                  <view class="celltext-st">{{item.chargeIncome}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>

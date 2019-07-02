@@ -1,0 +1,130 @@
+<view>
+  <view class="{{type == 'wcl'?'item-text-wcl':'item-text'}}">
+    <view class="item-text-sqxx">
+    	<view class="item-text-title">
+    		投诉建议信息
+    	</view>
+    	<view class="item-text-detail">
+    		<view class="item-text-detail-l1">申请时间 </view>
+    		<view class="item-text-detail-l2">{{info.commitTimeFormat}}</view>
+    	</view>
+      <view class="item-text-detail">
+	    		<view class="item-text-detail-l1">工单类型 </view>
+            <view class="item-text-detail-l2">
+              <block wx:if="{{info.csworkorderType == '10'}}">
+                退款申请
+              </block>
+              <block wx:if="{{info.csworkorderType == '20'}}">
+                投诉建议
+              </block>
+            </view>
+	    </view>
+      <view class="item-text-detail">
+    		<view class="item-text-detail-l1">关联充电订单 </view>
+    		<view class="item-text-detail-l2">{{info.chargeRecordId}}</view>
+    	</view>
+    	<view class="item-text-detail2">
+    		<view class="item-text-detail-l1">投诉建议说明 </view>
+    		<view class="item-text-detail-l2">{{info.csworkorderDesc}}</view>
+		</view>
+    	<block wx:if ="{{imgcount != 0}}">
+			<view class="image-show">
+				<view data-imsrc="{{info.csworkorderAttach}}" bindtap="previewImage" >
+					  <image src="{{info.csworkorderAttach}}" class="image" mode="aspectFit"></image>
+				</view>
+			</view>
+	    </block>
+    </view>
+    
+    <view class="item-text-sqxx">
+    	<view class="item-text-title">
+    		其他关联信息
+    	</view>
+    	<view class="item-text-detail">
+    		<view class="item-text-detail-l1">关联插座编号 </view>
+    		<view class="item-text-detail-l2">{{info.chargeplugNo}}</view>
+    	</view>
+      <view class="item-text-detail">
+    		<view class="item-text-detail-l1">关联设备编号 </view>
+    		<view class="item-text-detail-l2">{{info.chargedeviceNo}}</view>
+    	</view>
+      <view class="item-text-detail">
+    		<view class="item-text-detail-l1">关联充电站名称 </view>
+    		<view class="item-text-detail-l2">{{info.chargestationName}}</view>
+    	</view>
+    	<view class="item-text-detail2">
+    		<view class="item-text-detail-l1">关联运营商 </view>
+    		<view class="item-text-detail-l2">{{info.orgName}}</view>
+		  </view>
+    	<view class="item-text-detail2">
+    		<view class="item-text-detail-l1">关联运营负责人 </view>
+    		<view class="item-text-detail-l2">{{info.oppersonName}} {{info.oppersonMobile}}</view>
+		  </view>
+    </view>
+
+    <view class="item-text-sqxx">
+    	<view class="item-text-title">
+    		处理信息
+    	</view>
+    		<view class="item-text-cl" wx:for="{{dinfo}}" wx:key="csworkorderId">
+	    		<view>
+		    		<view class="item-text-cl-l1">{{item.handleSn}}、</view>
+		    		<view class="item-text-cl-l2">{{item.handleTime}}</view>
+		    		<view class="item-text-cl-l3"></view>
+		    	</view>
+		    	<view>
+		    		<view class="item-text-cl-l4">{{item.handler}} </view>
+		    		<view class="item-text-cl-l3">处理</view>
+		    	</view>
+		    	<block wx:if="{{item.handleDesc != ''}}">
+		    		<view>
+			    		<view class="item-text-cl-l5">处理说明：{{item.handleDesc}} </view>
+			    	</view>
+		    	</block>
+		    	<view style="height:1px; margin-top:-1px;clear: both;overflow:hidden;"></view>
+		    </view>
+    </view>
+    <block wx:if="{{type == 'ygd'}}">
+	    <view class="item-text-sqxx">
+	    	<view class="item-text-title">
+	    		归档信息
+	    	</view>
+    		<view class="item-text-gd">
+		    	<view>
+		    		<view class="item-text-gd-l1">{{info.archiveTimeFormat}}</view>
+		    		<view class="item-text-gd-l2">归档</view>
+		    	</view>
+		    	<view>
+		    		<view class="item-text-gd-l3">{{info.archiveDesc}}</view>
+		    	</view>
+	    	</view>
+	    </view>
+    </block>
+    </view>
+    
+    <block wx:if="{{type == 'wcl'}}">
+      <view class="item-btn">
+        <view class="item-btn-cl"  bindtap="rePage">处理并回复平台</view>
+      </view>
+      <view class="modal" wx:if="{{!hidden}}">
+			<view class="modal-container" animation="{{animContentData}}">
+				<view class="modal-close" bindtap="onModalCloseTap">×</view>
+				<view class="modal-content">
+					<view class="grid-child">
+						<view class="grid-child-title">
+							<text class="c-title">处理意见</text>
+						</view>
+					</view>
+					<view class="page-section">
+						<view class="page-section-demo">
+							<textarea bindinput="bindTextAreaBlur" name="textarea" placeholder="请输入处理意见" fixed="true" style="height:100px"/>
+						</view>
+						<view class="page-section-btns">
+							<button type="primary" bindtap="qrfk">确认回复</button>
+						</view>  
+					</view>
+				</view>
+			</view>
+      </view>
+	  </block>
+</view>

@@ -1,0 +1,132 @@
+<view class="page">
+    <view class="main_lb">
+          <view ontap="goDetail" data-stid="{{dInfo.recordId}}">
+            <view class= "main_list_stname">
+              {{dInfo.cdzname}}
+            </view>
+            <view class= "main_list_addr">
+                <view class="main-img">
+                  <image src="/image/cd-addr.png" style="width:14px;height:15px;"mode="scaleToFill"/>
+                </view>
+                <view class="main_list_addr_sm">
+                  {{dInfo.stationAddr}}
+                </view>
+            </view>
+            
+            <view class= "main_list_addr">
+                <view class="main-img">
+                  <image src="/image/cd-phone.png" style="width:14px;height:15px;"mode="scaleToFill"/>
+                </view>
+                <view class="main_list_addr_sm">
+                  {{dInfo.chargeUserMobile}}
+                </view>
+            </view>
+
+            <view class= "main_list_addr">
+                <view class="main-img">
+                  <image src="/image/cd-user.png" style="width:14px;height:15px;"mode="scaleToFill"/>
+                </view>
+                <view class="main_list_addr_sm">
+                  {{dInfo.chargeUserName}}
+                </view>
+            </view>
+            <view class= "main_list_cdxx main_list_first">
+                <view class="main_param">
+                  充电开始时间：
+                </view>
+                <view class="main_value">
+                  {{dInfo.chargeOpenTime}}
+                </view>
+            </view>
+            <block wx:if="{{type=='his'}}">
+             <view class= "main_list_cdxx">
+                <view class="main_param">
+                  充电结束时间：
+                </view>
+                <view class="main_value">
+                  {{dInfo.chargeFinishTime}}
+                </view>
+            </view>
+
+             <view class= "main_list_cdxx">
+                <view class="main_param">
+                  充电结束原因：
+                </view>
+                <view class="main_value">
+                  <block wx:if="{{dInfo.finishReason == '0'}}">
+                    电量用完停止充电
+                  </block>
+                  <block wx:if="{{dInfo.finishReason == '1'}}">
+                    浮充时间完成停止充电
+                  </block>
+                  <block wx:if="{{dInfo.finishReason == '2'}}">
+                    插头拔掉停止充电
+                  </block>
+                  <block wx:if="{{dInfo.finishReason == '3'}}">
+                    功率超限停止充电
+                  </block>
+                  <block wx:if="{{dInfo.finishReason == '4'}}">
+                    计时时间到停止充电
+                  </block>
+                  <block wx:if="{{dInfo.finishReason == '-1'}}">
+                    设备总体已经超过最大功率
+                  </block>
+                  <block wx:if="{{dInfo.finishReason == '-97'}}">
+                    剩余充电电量为零或剩余充电时间为零（结束命令未收到）
+                  </block>
+                  <block wx:if="{{dInfo.finishReason == '-98'}}">
+                    充电结束等待超时
+                  </block>
+                  <block wx:if="{{dInfo.finishReason == '-99'}}">
+                    充电开启等待超时
+                  </block>
+                </view>
+            </view>
+            </block>
+            <view class= "main_list_cdxx">
+                <view class="main_param">
+                  插座序号：
+                </view>
+                <view class="main_value">
+                  {{dInfo.plugSn}}号
+                </view>
+            </view>
+            <view class= "main_list_cdxx">
+                <view class="main_param">
+                  充电类型：
+                </view>
+                <view class="main_value">
+                  <block wx:if="{{dInfo.chargeType == '01'}}">
+                    按时间
+                  </block>
+                  <block wx:if="{{dInfo.chargeType == '02'}}">
+                    按电量
+                  </block>
+                  <block wx:if="{{dInfo.chargeType == '03'}}">
+                    按次
+                  </block>
+                </view>
+            </view>
+
+            <view class= "main_list_cdxx">
+                <view class="main_param">
+                  充电金额：
+                </view>
+                <view class="main_value">
+                  {{dInfo.chargeMoney}}（元）
+                </view>
+            </view>
+            <view class= "main_list_cdxx" wx:if="{{type=='his'}}">
+                <view class="main_param">
+                  退费金额：
+                </view>
+                <view class="main_value">
+                  {{dInfo.returnMoney}}（元）
+                </view>
+            </view>
+          </view>
+    </view>
+    <view >
+    <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ec}}"></ec-canvas>
+    </view>
+</view>

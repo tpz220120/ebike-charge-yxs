@@ -1,0 +1,82 @@
+page {
+  background:rgba(229,229,229,1);
+  font-size:34rpx;
+  font-family:MicrosoftYaHei;
+  font-weight:400;
+  color:rgba(50,50,50,1);
+}
+
+.tx_cell{
+  margin:10px;
+  padding:20px;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 5px 10px 0px rgba(10,31,51,0.2);
+  border-radius:5px;
+}
+
+.tx_flex{
+  display: flex;
+  align-items: center;
+}
+
+.tx_flex_top{
+  display: flex;
+  align-items:flex-start;
+}
+
+.tx_card{
+  width:30%;
+}
+
+.tx_sel{
+  margin-top:5px;
+  font-size:12px;
+  width:68%;
+}
+
+.line{
+  height:1px;
+  margin-top:20px;
+  background:rgba(178,178,178,1);
+}
+
+.tx_title{
+  margin-top:40rpx;
+}
+
+.tx_input{
+  margin-left:20px;
+  font-size:20px;
+}
+
+.tx_yecell{
+  margin-top:34rpx;
+  font-size:12px;
+  color:rgba(100,100,100,1);
+}
+
+.tx_ye{
+  width:82%;
+}
+
+.tx_btn{
+  margin:20px 10px 10px 10px;
+  height:50px;
+  background:linear-gradient(0deg,rgba(127,215,255,1),rgba(51,153,255,1));
+  border-radius:5px;
+  text-align:center;
+  line-height:50px;
+  font-size:36rpx;
+  color:rgba(255,255,255,1);
+}
+
+.tx_tip{
+  margin:0px 10px 0px 5px;
+  font-size:10px;
+}
+
+.tx_tip_img{
+  margin-top:1.5px;
+  display: flex;
+  align-items:flex-start;
+}

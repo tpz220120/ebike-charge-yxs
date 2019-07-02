@@ -1,0 +1,52 @@
+<view>
+  <view class="tx_cell">
+    <view class="tx_flex">
+      <view class="tx_card">
+        银行卡号
+      </view>
+      <view class="tx_sel">
+        <picker bindchange="bindAccountChange" value="{{cardIndex}}" range="{{cardList}}">
+            <view class="weui-input">{{cardList[cardIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="line">
+    </view>
+    <view class="tx_title">
+       提现金额
+    </view>
+    <view class="tx_title tx_flex">
+       <view class="tx_flex">
+          <image class="" src="/image/tx_money.png" style="width:17px;height:22px"mode="scaleToFill" />
+       </view>
+       <view class="tx_input">
+          <input type="digit" class="weui-input" placeholder="请输入提现金额" value="{{tx_account}}" bindinput="bindKeyInput"/>
+       </view>
+    </view>
+    <view class="line">
+    </view>
+
+    <view class="tx_yecell tx_flex">
+      <view class="tx_ye">
+          当前账户余额：<text style="color:#3399FF;">{{account}}</text> （元）
+      </view>
+      <view bindtap="getAll">
+          <text style="color:#3399FF;">全部提现</text>
+      </view>
+    </view>
+
+    <view class="tx_btn" bindtap="saveTxsq">
+          提现
+    </view>
+
+    <view class="tx_flex_top">
+      <view class="tx_tip_img">
+          <image class="" src="/image/tip.png" style="width:12px;height:12px"mode="scaleToFill" />
+       </view>
+      <view class="tx_tip">
+      提现说明：提现产生的手续费由运营商承担。提现申请受理后，4-5个工作日内完成转账支付。
+      </view>
+    </view>
+  </view>
+</view>

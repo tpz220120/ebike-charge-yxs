@@ -1,0 +1,17 @@
+<view>
+  <view class="a-error-view-wrapper">
+      <image class="a-error-view-pic"/>
+      <view class="a-error-view-title">{{title}}</view>
+      <block wx:if="{{sfxs != ''}}">
+        <view class="a-error-view-result-view">设备编码：{{devno}} 插座序号：{{czh}}</view>
+      </block>
+      <view class="a-error-view-result-view">{{resultView}}</view>
+      <view class="a-error-view-action">
+          <view
+              class="a-error-view-button"
+              hover-class="a-error-view-button-hover"
+              bindtap="{{onButtonTap}}"
+          >{{button}}</view>
+      </view>
+  </view>
+</view>

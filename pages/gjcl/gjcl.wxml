@@ -1,0 +1,119 @@
+<view class="page">
+  <view class="weui-tab">
+    <view class="weui-navbar">
+      <block wx:for="{{tabs}}" wx:key="*this">
+        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+          <view class="weui-navbar__title">{{item}}</view>
+        </view>
+      </block>
+      <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </view>
+    <view class="weui-tab__panel">
+      <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+        <view class="item-text">
+          <view wx:if="{{wcount == 0}}">
+            <view class="re-center">
+              <view class="nor-img">
+                <image src="/image/no-record-yxs.png" style="width:180px;height:190px;" />
+              </view>
+              <view class="nor-text">暂无告警记录</view>
+            </view>
+          </view>
+          <view wx:if="{{wcount != 0}}">
+            <view wx:for="{{winfo}}" wx:key="opsworkorderId">
+              <view class="item-text-sqxx" data-gjclid="{{item.opsworkorderId}}" data-type="wcl" bindtap="gjclmx">
+                <view class="item-text-detail">
+                  <view class="item-text-detail-l1">告警时间 </view>
+                  <view class="item-text-detail-l2">{{item.alarmTime}}</view>
+                </view>
+                <view class="item-text-detail2">
+                  <view class="item-text-detail-l1">告警类型</view>
+                  <view class="item-text-detail-l2">
+                    <block wx:if="{{item.opsworkorderType == '101'}}">设备离线</block>
+                    <block wx:if="{{item.opsworkorderType =='102'}}">设备停电</block>
+                    <block wx:if="{{item.opsworkorderType =='201'}}">插座供电异常</block>
+                    <block wx:if="{{item.opsworkorderType =='202'}}">插座端子失电</block>
+                  </view>
+                </view>
+                <view class="item-text-detail2">
+                  <view class="item-text-detail-l1">充电站地址</view>
+                  <view class="item-text-detail-l2">{{item.chargestationAddr}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+        <view class="item-text">
+          <view wx:if="{{ycount == 0}}">
+            <view class="re-center">
+              <view class="nor-img">
+                <image src="/image/no-record-yxs.png" style="width:180px;height:190px;" />
+              </view>
+              <view class="nor-text">暂无告警记录</view>
+            </view>
+          </view>
+          <view wx:if="{{ycount != 0}}">
+            <view wx:for="{{yinfo}}" wx:key="opsworkorderId">
+                <view class="item-text-sqxx" data-gjclid="{{item.opsworkorderId}}" data-type="ycl" bindtap="gjclmx">
+                <view class="item-text-detail">
+                  <view class="item-text-detail-l1">告警时间 </view>
+                  <view class="item-text-detail-l2">{{item.alarmTime}}</view>
+                </view>
+                <view class="item-text-detail2">
+                  <view class="item-text-detail-l1">告警类型</view>
+                  <view class="item-text-detail-l2">
+                    <block wx:if="{{item.opsworkorderType == '101'}}">设备离线</block>
+                    <block wx:if="{{item.opsworkorderType =='102'}}">设备停电</block>
+                    <block wx:if="{{item.opsworkorderType =='201'}}">插座供电异常</block>
+                    <block wx:if="{{item.opsworkorderType =='202'}}">插座端子失电</block>
+                  </view>
+                </view>
+                <view class="item-text-detail2">
+                  <view class="item-text-detail-l1">充电站地址</view>
+                  <view class="item-text-detail-l2">{{item.chargestationAddr}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+        <view class="item-text">
+          <view wx:if="{{gcount == 0}}">
+            <view class="re-center">
+              <view class="nor-img">
+                <image src="/image/no-record-yxs.png" style="width:180px;height:190px;" />
+              </view>
+              <view class="nor-text">暂无告警记录</view>
+            </view>
+          </view>
+          <view wx:if="{{gcount != 0}}">
+            <view wx:for="{{ginfo}}" wx:key="opsworkorderId">
+               <view class="item-text-sqxx" data-gjclid="{{item.opsworkorderId}}" data-type="ygd" bindtap="gjclmx">
+                <view class="item-text-detail">
+                  <view class="item-text-detail-l1">告警时间 </view>
+                  <view class="item-text-detail-l2">{{item.alarmTime}}</view>
+                </view>
+                <view class="item-text-detail2">
+                  <view class="item-text-detail-l1">告警类型</view>
+                  <view class="item-text-detail-l2">
+                    <block wx:if="{{item.opsworkorderType == '101'}}">设备离线</block>
+                    <block wx:if="{{item.opsworkorderType =='102'}}">设备停电</block>
+                    <block wx:if="{{item.opsworkorderType =='201'}}">插座供电异常</block>
+                    <block wx:if="{{item.opsworkorderType =='202'}}">插座端子失电</block>
+                  </view>
+                </view>
+                <view class="item-text-detail2">
+                  <view class="item-text-detail-l1">充电站地址</view>
+                  <view class="item-text-detail-l2">{{item.chargestationAddr}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

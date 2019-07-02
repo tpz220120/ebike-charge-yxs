@@ -1,0 +1,98 @@
+<view class="page">
+    <view class="main_lb">
+        <view class= "main_list_cdxx main_list_first">
+            <view class="main_param">
+              设备编号：
+            </view>
+            <view class="main_value">
+              {{info.chargedeviceNo}}
+            </view>
+        </view>
+          <view class= "main_list_cdxx">
+            <view class="main_param">
+              插座数量：
+            </view>
+            <view class="main_value">
+              {{info.plugCount}}
+            </view>
+        </view>
+
+          <view class= "main_list_cdxx">
+            <view class="main_param">
+              型号规格：
+            </view>
+            <view class="main_value">
+              {{info.modelNo}}
+            </view>
+        </view>
+
+        <view class= "main_list_cdxx">
+            <view class="main_param">
+              通讯规约：
+            </view>
+            <view class="main_value">
+              {{info.protocolType}}
+            </view>
+        </view>
+        <view class= "main_list_cdxx">
+            <view class="main_param">
+              规约版本：
+            </view>
+            <view class="main_value">
+              {{info.protocolVersion}}
+            </view>
+        </view>
+
+        <block wx:if="{{ygl != ''}}">
+          <view class= "main_list_cdxx main_list_second">
+              <view class="main_param">
+                运行状态：
+              </view>
+              <view class="main_value">
+                <image src="{{info.opStatus == '1'?'/image/online.png':'/image/offline.png'}}"  style="width:50px;height:20px;"mode="scaleToFill"/>
+              </view>
+          </view>
+
+          <view class= "main_list_cdxx">
+              <view class="main_param">
+                充电站编号：
+              </view>
+              <view class="main_value">
+                {{info.stationNo}}
+              </view>
+          </view>
+
+          <view class= "main_list_cdxx">
+              <view class="main_param">
+                充电站名称：
+              </view>
+              <view class="main_value">
+                {{info.cdzname}}
+              </view>
+          </view>
+
+          <view class= "main_list_cdxx">
+              <view class="main_param">
+                充电站地址：
+              </view>
+              <view class="main_value">
+                {{info.stationAddr}}
+              </view>
+          </view>
+        </block>
+      </view>
+      <block wx:if="{{ygl != ''}}">
+      <view class= "main_list_btn" bindtap='unbindDev'>
+          <view class="main_list_btn_text">
+              解除设备
+          </view>
+      </view>
+      </block>
+      <block wx:if="{{ygl == ''}}">
+      <view class= "main_list_btn" bindtap='goNext'>
+          <view class="main_list_btn_text">
+              下一步
+          </view>
+      </view>
+      </block>
+</view>

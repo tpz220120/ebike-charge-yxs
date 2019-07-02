@@ -1,0 +1,67 @@
+page{
+  background:rgba(255,255,255,1);
+}
+
+.main_lb{
+  font-family:MicrosoftYaHei;
+  font-weight:400;
+  font-size:15px;
+  color:rgba(100,100,100,1);
+}
+
+.main_list_cdxx{
+  padding:0px 0 10px 20px;
+  display: flex;
+}
+
+.first{
+  margin-top:15px;
+}
+
+.main_param{
+  width:30%;
+}
+
+.main_value{
+  width:68%;
+  text-align:right;
+}
+
+.main_list_ts{
+  margin-top:20px;
+  padding:0px 0 10px 20px;
+  display: flex;
+  color:rgba(50,50,50,1);
+
+}
+
+.main_img{
+  margin-right:10px;
+}
+
+.main_sm{
+  word-wrap: break-word;
+}
+
+.main_list_ts2{
+  margin-top:50px;
+  margin-left:40px;
+  color:rgba(50,50,50,1);
+  font-size:15px;
+}
+
+.main_list_btn{
+  margin-top:20px;
+  margin-left:40px;
+  background:linear-gradient(0deg,rgba(127,215,255,1),rgba(51,153,255,1));
+  border-radius:5px;
+  width:80%;
+  height:50px;
+}
+
+.main_list_btn_text{
+  text-align:center;
+  font-size:18px;
+  color:rgba(255,255,255,1);
+  line-height: 50px;
+}

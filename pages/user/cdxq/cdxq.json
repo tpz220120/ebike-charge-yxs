@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "充电订单明细",
+  "usingComponents": {
+      "ec-canvas": "../../../ec-canvas/ec-canvas"
+  }
+}

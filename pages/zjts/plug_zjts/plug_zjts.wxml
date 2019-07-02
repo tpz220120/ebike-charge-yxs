@@ -1,0 +1,39 @@
+<view class="page">
+    <view class="main_lb">
+        <view class= "main_list_cdxx first">
+            <view class="main_param">
+              设备编号：
+            </view>
+            <view class="main_value">
+              {{devno}}
+            </view>
+        </view>
+          <view class= "main_list_cdxx">
+            <view class="main_param">
+              插座序号：
+            </view>
+            <view class="main_value">
+              {{czh}}
+            </view>
+        </view>
+
+          <view class= "main_list_ts">
+            <view class="main_img">
+              <image src="/image/ts_tip.png" style="height:10px;width:9px"></image>
+            </view>
+            <view>
+              确认设备已正常供电，插座已正确接线。
+            </view>
+          </view>
+
+          <view class= "main_list_ts2">
+            下发充电命令给该插座？
+          </view>
+      </view>
+
+      <view class= "main_list_btn" bindtap='goNext'>
+          <view class="main_list_btn_text">
+              确认下发
+          </view>
+      </view>
+</view>

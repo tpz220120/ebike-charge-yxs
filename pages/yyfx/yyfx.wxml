@@ -1,0 +1,41 @@
+<view class="main_text">
+  截止{{showD}}（当前日期的前一天），我司建设了充电站{{tycdzs}}个，安装充电桩设备{{tycdsbs}}个、充电插座{{tycdczs}}个，累计为用户提供了{{ljcdcs}}人次充电服务，收取充电费用{{ljcdsr}}元。
+</view>
+
+<view class="main_cdqk">
+  <view class="main_cdqk_text">
+      <view class="main_img">
+        <image class="" src="/image/yyfx_cd.png" style="width:15px;height:15px"mode="scaleToFill" />
+      </view>
+      <view>
+        充电收入和充电次数
+      </view>
+
+      <view class="selType main-flex">
+          <view class="sel {{type == 'month'? 'hover':''}}" data-type="month" ontap="reLine">
+                月
+          </view>
+          <view class="sel {{type == 'year'? 'hover':''}}" data-type="year" ontap="reLine">
+                年
+          </view>
+      </view>
+  </view>
+  <view>
+  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ecLine}}"></ec-canvas>
+  </view>
+</view>
+
+<view class="main_cdqk">
+  <view class="main_cdqk_text">
+      <view class="main_img">
+        <image class="" src="/image/yyfx_st.png" style="width:15px;height:15px"mode="scaleToFill" />
+      </view>
+      <view>
+        电站建设情况
+      </view>
+  </view>
+  <view>
+  <ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar2" ec="{{ec}}"></ec-canvas>
+  </view>
+</view>
+

@@ -1,0 +1,68 @@
+.main_text{
+  min-height:50px;
+  margin:5px;
+  padding:10px;
+  background:rgba(255,255,255,1);
+  border-radius:5px;
+  font-size:24rpx;
+  font-family:MicrosoftYaHei;
+  font-weight:400;
+  color:rgba(100,100,100,1);
+}
+
+#mychart-dom-bar {
+  width: 100%;
+  height: 300px;
+  display: block;
+}
+
+#mychart-dom-bar2 {
+  width: 100%;
+  height: 300px;
+  display: block;
+}
+
+.main_cdqk{
+  margin:5px;
+  background:rgba(255,255,255,1);
+  border-radius:5px;
+}
+.main_cdqk_text{
+  font-size:15px;
+  font-family:MicrosoftYaHei;
+  font-weight:400;
+  color:rgba(50,50,50,1);
+  display: flex;
+  margin-top:5px;
+  padding-top:5px;
+  margin-bottom:5px;
+}
+
+.main_img{
+  margin-left:15px;
+  margin-right:5px;
+  display: flex;
+  align-items: center;
+}
+
+.selType{
+    margin-left:100px;
+    border:1px solid rgba(82,145,255,1);
+    border-radius:4px;
+    width:60px;
+    display: flex;
+}
+
+.sel{
+    width:30px;
+    font-size:10px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    display:flex;
+    align-items:center;/*垂直居中*/
+    justify-content: center;/*水平居中*/
+}
+
+.hover{
+    background:rgba(82,145,255,1);
+}

@@ -1,0 +1,90 @@
+<view class="page">
+        <view class= "main_list_dev">
+              电能表编号：{{dnbbh}}
+        </view>
+
+        <view class="weui-search-bar2">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="confirm"/>
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14" color="#3399FF"></icon>
+                    <view class="weui-search-bar__text">根据名称或地址搜索充电站</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}"             bindtap="hideInput">取消</view>
+        </view>
+
+    <view class="yz_tab">
+      <view class="{{seltab == '0' ? 'yz_tab_sel': 'yz_tab_nosel'}}" ontap="goSelTab" data-selnum="0">
+            未装表
+      </view>
+      <view class="yz_tab_k">
+      </view>
+      <view class="{{seltab == '1' ? 'yz_tab_sel': 'yz_tab_nosel'}}" ontap="goSelTab" data-selnum="1">
+            已装表
+      </view>
+    </view>
+
+    <view class="main_lb"> 
+        <view wx:if="{{seltab == '0'}}" wx:for="{{wglList}}" wx:key="id">
+          <view class="{{index == selc ? 'main_list_sel': 'main_list_nosel'}}" ontap="getSel" data-paramid="{{item.id}}" data-indexsel="{{index}}">
+            <view class= "main_list_stname">
+              <view class="main_stname">
+                {{item.stationNo}}
+              </view>
+              <view wx:if="{{item.chargeDevNo  != '' && item.chargeDevNo  != null}}">
+              <image src="/image/rel_exsit.png" style="width:25px;height:21px;"mode="scaleToFill"/>
+            </view>
+            </view>
+            <view class= "main_list_addr">
+                <view class="main-img">
+                  <image src="/image/cd-addr.png" style="width:14px;height:15px;"mode="scaleToFill"/>
+                </view>
+                <view class="main_list_addr_sm">
+                  {{item.name}}
+                </view>
+            </view>
+            
+            <view wx:if="{{item.chargeDevNo  != '' && item.chargeDevNo  != null}}" class= "main_list_dev">
+                <text>已装电能表：</text><text style="color:#3399FF"> {{item.chargeDevNo}}</text>
+            </view>
+          </view>
+        </view>
+
+        <view wx:if="{{seltab == '1'}}" wx:for="{{glList}}" wx:key="id">
+          <view class="{{index == selcyz ? 'main_list_sel': 'main_list_nosel'}}" ontap="getSelYz" data-paramid="{{item.id}}" data-indexsel="{{index}}">
+            <view class= "main_list_stname">
+              <view class="main_stname">
+                {{item.stationNo}}
+              </view>
+              <view wx:if="{{item.chargeDevNo  != '' && item.chargeDevNo  != null}}">
+              <image src="/image/rel_exsit.png" style="width:25px;height:21px;"mode="scaleToFill"/>
+            </view>
+            </view>
+            <view class= "main_list_addr">
+                <view class="main-img">
+                  <image src="/image/cd-addr.png" style="width:14px;height:15px;"mode="scaleToFill"/>
+                </view>
+                <view class="main_list_addr_sm">
+                  {{item.name}}
+                </view>
+            </view>
+            
+            <view wx:if="{{item.chargeDevNo  != '' && item.chargeDevNo  != null}}" class= "main_list_dev">
+                <text>已装电能表：</text><text style="color:#3399FF"> {{item.chargeDevNo}}</text>
+            </view>
+          </view>
+        </view>
+    </view>
+    <view class= "main_list_btn" bindtap='goNext'>
+        <view class="main_list_btn_text">
+            下一步
+        </view>
+    </view>
+</view>

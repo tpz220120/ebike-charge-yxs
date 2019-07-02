@@ -1,0 +1,180 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="confirm" />
+          <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+            <icon type="clear" size="14"></icon>
+          </view>
+        </view>
+        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+          <icon class="weui-icon-search" type="search" size="14" color="#3399FF"></icon>
+          <view class="weui-search-bar__text">根据充电站名称或地址搜索</view>
+        </label>
+      </view>
+      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+
+      <view class="search-img" ontap="goMain">
+        <image src="/image/list-main.png" style="width:20px;height:20px;" mode="scaleToFill" />
+      </view>
+    </view>
+  </view>
+
+  <view class="main_lb">
+    <view wx:for="{{stList}}" wx:key="id">
+      <view class="main_st" data-stid="{{item.id}}">
+        <view class="main_st_show_first">
+          <view class="main_st_img">
+            <image src="/image/main-stname.png" style="width:15px;height:15px;" mode="scaleToFill" />
+          </view>
+          <view class="main_st_text">
+            {{item.name}}
+          </view>
+        </view>
+        <view class="main_st_show">
+          <view class="main_st_img">
+            <image src="/image/main-stno.png" style="width:15px;height:15px;" mode="scaleToFill" />
+          </view>
+          <view class="main_st_text2">
+            {{item.stationNo}}
+          </view>
+        </view>
+        <view class="main_st_show_end">
+          <view class="main_st_img">
+            <image src="/image/main-addr.png" style="width:15px;height:15px;" mode="scaleToFill" />
+          </view>
+          <view class="main_st_text2">
+            {{item.stationAddr}}
+          </view>
+        </view>
+        <view class="main_detail" wx:if="{{item.up}}">
+          <view class="main_detail_title">
+            <view class="main_detail_title_text">
+              设备类型
+            </view>
+            <view class="main_detail_title_text">
+              设备编号
+            </view>
+          </view>
+          <view wx:for="{{item.devList}}" wx:key="chargedeviceId" wx:for-item="devItem" wx:for-index="devIndex">
+            <view class="main_detail_list">
+              <view class="main_detail_list_a1">
+                充电桩
+              </view>
+              <view class="main_detail_list_a2">
+                <image src="{{devItem.opStatus == '1'? '/image/main-dev-on.png' : '/image/main-dev-off.png'}}" style="width:9px;height:12px;" mode="scaleToFill" />
+              </view>
+
+              <view class="main_detail_list_a3">
+                {{devItem.chargedeviceNo}}
+              </view>
+
+              <view class="main_detail_list_a4">
+                <view data-index="{{index}}" data-devindex="{{devIndex}}" data-showts="{{devItem.showts}}" bindtap="showtsxx" wx:if="{{devItem.tsxxCount != 0}}">
+                  <image src="{{devItem.showts ? '/image/main-bottom.png' : '/image/main-right.png'}}" style="width:12px;height:12px;" mode="scaleToFill" />
+                </view>
+              </view>
+            </view>
+            <view class="main_tsxx_detail" wx:if="{{devItem.showts}}">
+              <view class="main_detail_title">
+                <view class="main_detail_title_text">
+                  插座序号
+                </view>
+                <view class="main_detail_title_text">
+                  调试结果
+                </view>
+              </view>
+                <view wx:for="{{devItem.tsxx}}" wx:key="czh" wx:for-item="tsxxItem">
+                  <view class="main_tsxx_list">
+                    <view class="main_detail_title">
+                      <view class="main_detail_title_text">
+                        {{tsxxItem.czh}}
+                      </view>
+                    <view wx:if="{{tsxxItem.tsjg == '1'}}" class="main_detail_title_text tscg">
+                        成功
+                    </view>
+                    <view wx:if="{{tsxxItem.tsjg == '0'}}" class="main_detail_title_text tssb">
+                        失败
+                    </view>
+                    </view>
+                  </view>
+              </view>
+              <view class="main_blank"></view>
+            </view>
+          </view>
+          <view wx:for="{{item.meterList}}" wx:key="meterdevice_id" wx:for-item="meterItem" wx:for-index="meterIndex">
+            <view class="main_detail_list">
+              <view class="main_detail_list_a1">电能表</view>
+              <view class="main_detail_list_a2">
+                <image src="/image/main-meter.png" style="width:12px;height:12px;" mode="scaleToFill" />
+              </view>
+              <view class="main_detail_list_a3">{{meterItem.meterdevice_no}}</view>
+
+              <view class="main_detail_list_a4">
+                <view data-index="{{index}}" data-meterindex="{{meterIndex}}" data-showdnb="{{meterItem.showdnb}}" bindtap="showmeter">
+                  <image src="{{meterItem.showdnb ? '/image/main-bottom.png' : '/image/main-right.png'}}" style="width:12px;height:12px;" mode="scaleToFill" />
+                </view>
+              </view>
+            </view>
+            <view class="main_tsxx_detail" wx:if="{{meterItem.showdnb}}">
+                <view class="main_detail_title">
+                  <view class="main_detail_title_text">
+                    电能表编号
+                  </view>
+                  <view class="main_detail_title_text">
+                    装表示数（kWh）
+                  </view>
+                </view>
+                <view class="main_tsxx_list">
+                  <view class="main_detail_title">
+                    <view class="main_detail_title_text">
+                      {{meterItem.meterdevice_no}}
+                    </view>
+                    <view class="main_detail_title_text">
+                      {{meterItem.initD}}
+                    </view>
+                  </view>
+                </view>
+
+                <view class="main_btn" data-index="{{index}}" data-meterno ="{{meterItem.meterdevice_no}}
+                data-meterindex="{{meterIndex}}" data-progress ="{{meterItem.progress}}"bindtap="showLoad">
+                  <view class="main_btn_text">
+                    抄表
+                  </view>
+                </view>
+                <view id="loading" wx:if="{{meterItem.showload != ''}}">
+                  <view class="weui-progress">
+                      <view class="weui-progress__bar">
+                          <progress percent="{{meterItem.progress}}" stroke-width="3"       color="#3399FF"/>
+                      </view>
+                  </view>
+                </view>
+                <view wx:if="{{meterItem.showCb != ''}}">
+                  <view class="main_detail_cb">
+                    <view class="main_meter_blank">
+                    </view>
+                    <view class="main_meter_cb">
+                      示值（kWh）：{{meterItem.cbInitD}}
+                    </view>
+                    <view class="main_meter_cb">
+                      日期：{{meterItem.cbDate}}
+                    </view>
+                  </view>
+                </view>
+                <view class="main_blank">
+                </view>
+              </view>
+          </view>
+
+          <view class="main_blank">
+          </view>
+        </view>
+        <view class="down" data-index="{{index}}" data-sfup="{{item.up}}" bindtap="upCz">
+          <image src="{{item.up ? '/image/main-close.png' : '/image/main-open.png'}}" style="width:10px;height:9px;" mode="scaleToFill" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

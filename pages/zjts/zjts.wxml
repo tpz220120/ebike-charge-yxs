@@ -1,0 +1,21 @@
+<view class="main">
+			<view bindtap = "scanwx" data-type="dev" class="main_scan">
+				<view class="main_img">
+        <image src="/image/scan_dev.png" style="height:80px;width:60px"/>
+        </view>
+				<view class="main_text">装接充电桩</view>
+			</view>
+			<view bindtap = "scanwx" data-type="imei" class="main_scan">
+				<view class="main_img"><image src="/image/scan_bj.png" style="height:80px;width:60px"/></view>
+				<view class="main_text">装接电能表</view>
+			</view>
+</view>
+
+<view class="main">
+      <view bindtap = "scanwx" data-type="plug" class="main_scan">
+				<view class="main_img2"><image src="/image/scan_cz.png" style="height:60px;width:60px"/></view>
+				<view class="main_text">调试插座</view>
+			</view>
+      <view class="main_scan_null">
+      </view>
+</view>
